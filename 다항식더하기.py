@@ -27,15 +27,9 @@ def solution(polynomial):
     if x_sum == 0:
         result = "{0}".format(int_sum)
     elif x_sum == 1:
-        if int_sum == 0:
-            result = "x"
-        else:
-            result = "x + {0}".format(int_sum)
+        result = "x + " + str(int_sum) if int_sum != 0 else "x"
     else:
-        if int_sum == 0:
-            result = "{0}x".format(x_sum)
-        else:
-            result = "{0}x + {1}".format(x_sum, int_sum)
+        result = "{0}x + ".format(x_sum) + str(int_sum) if int_sum != 0 else "{0}x".format(x_sum)
     print(result)
 
-solution("x")
+solution("x + x + x")
