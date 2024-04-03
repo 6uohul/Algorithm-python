@@ -1,9 +1,8 @@
 def solution(n):
-    answer = []
 
-    while n // 10 > 0:
-        answer.append(n % 10)
-        n = n // 10
-    answer.append(n)
+    n = str(n)[::-1] 
+    answer = list(map(int, n))
+    print(answer)
+    return answer
 
 solution(12345)
