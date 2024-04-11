@@ -3,13 +3,14 @@ def solution(clothes):
     clothes_dic = {}
     for cloth in clothes:
         name, type = cloth
-        if type not in clothes_dic:
-            clothes_dic[type] = 0
-        clothes_dic[type] += 1
+        if type not in clothes_dic: # 옷의 종류에 없는 경우
+            clothes_dic[type] = 2   # 입지 않는 경우의 수도 더해서 2
+        else :
+            clothes_dic[type] += 1
 
     for count in clothes_dic.values():
-        answer *= count + 1
-
+        answer *= count
+    print(answer -1)
     return answer - 1
 
 solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])
