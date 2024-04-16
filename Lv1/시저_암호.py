@@ -2,23 +2,13 @@
 #   a~z 97~122
 def solution(s, n):
     answer = ''
-    array = list(s)
-    for i in range(0,len(array)):
-        if array[i] != " ":
-            ordNum = ord(array[i])
-            if ordNum <= 90: # 대문자인 경우
-                if ordNum + n > 90:
-                    ordNum += n - 26
-                    array[i] = array[i].replace(array[i], chr(ordNum))
-                    continue
-                array[i] = array[i].replace(array[i], chr(ordNum + n))
-            else:   # 소문자인 경우
-                if ordNum + n > 122:
-                    ordNum += n - 26
-                    array[i] = array[i].replace(array[i], chr(ordNum))
-                    continue
-                array[i] = array[i].replace(array[i], chr(ordNum + n))
-    answer = "".join(array)
+    s = list(s)
+    for i in range(len(s)):
+        if s[i].isupper():
+            s[i] = chr((ord(s[i]) - ord('A') + n) % 26 + ord('A'))
+        elif s[i].islower():
+            s[i] = chr((ord(s[i]) - ord('a') + n) % 26 + ord('a'))
+    answer = "".join(s)
     print(answer)
     return answer
 
