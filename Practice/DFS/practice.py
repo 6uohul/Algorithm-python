@@ -2,6 +2,7 @@ def dfs(g,v,visited):
 	visited[v] = True
 	print(v,end =' ')
 	for i in g[v]:
+		print(visited[i],end=' ')
 		if not visited[i]:
 			dfs(g,i,visited)
 g =[

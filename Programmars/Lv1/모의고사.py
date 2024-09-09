@@ -12,7 +12,7 @@ def solution(answers):
             score[2] += 1
         if answers[num] == student3[num]:
             score[3] += 1
-            
+
     max_score = max(score.values())
     result = [student for student, student_score in score.items() if student_score == max_score]
 
