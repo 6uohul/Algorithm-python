@@ -1,4 +1,3 @@
-# 미로 탈출 결로 찾기
 # BOJ 2178
 
 from collections import deque
