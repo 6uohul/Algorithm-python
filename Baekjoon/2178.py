@@ -1,4 +1,3 @@
-# BFS 사용, 모든 노드를 방문하는 것이 아니기 때문에 시간 적게 소요됨
 from collections import deque
 
 n, m = map(int, input().split())
@@ -18,12 +17,13 @@ def bfs(x, y):
         for i in range(4):
             nx, ny = x + dx[i], y + dy[i]
 			
-            # if문 하나에서 여러 조건을 확인하는 것 보다 아래처럼 쪼개는 것이 속도가 빠름
             if 0<=nx<n and 0<=ny<m and graph[nx][ny]==1: 
                 if visited[nx][ny] == 0 or visited[nx][ny] > visited[x][y] + 1:
                     q.append((nx, ny))
                     visited[nx][ny] = visited[x][y] + 1
+                    cnt = visited[nx][ny]
 
-    return
+    print(cnt)
+    return cnt
 
 bfs(0, 0)
