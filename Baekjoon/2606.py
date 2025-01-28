@@ -21,5 +21,18 @@ def dfs(M):
         if visited[n] == False:
             dfs(n)
 
-dfs(1)
+# dfs(1)
+# print(sum(visited) - 1)
+
+####### BFS #######
+
+visited[1] = True  #1번 컴퓨터부터 시작이니까 True 표시
+q = deque([1])
+while q:
+    v = q.popleft()
+    for n in graph[v]:
+        if visited[n] == False:
+            q.append(n)
+            visited[n] = True
+
 print(sum(visited) - 1)
