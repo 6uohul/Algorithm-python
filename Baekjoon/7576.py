@@ -1,6 +1,8 @@
 ### 토마토 BFS
 
+import sys
 from collections import deque
+input = sys.stdin.readline
 
 M, N = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(n)]
