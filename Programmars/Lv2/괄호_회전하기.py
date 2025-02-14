@@ -23,5 +23,27 @@ def solution(s):
 solution("[](){}")
 
 '''
-생각 못했던 점: s = s[1:] + s[0]를 하면 ㅣist로 바꿔주지 않아도 된다...!!!!!!
+생각 못했던 점: s = s[1:] + s[0]를 하면 list로 바꿔주지 않아도 된다...!!!!!!
 '''
+
+def is_valid(s):
+    stack = []
+    pair = {')': '(', ']': '[', '}': '{'}
+    for char in s:
+        if char in pair.values():
+            stack.append(char)
+        elif char in pair:
+            if not stack or pair[char] != stack.pop():
+                return False
+    return len(stack) == 0
+
+def rotate(s):
+    return s[1:] + s[:1]
+
+def solution(s):
+    count = 0
+    for _ in range(len(s)):
+        if is_valid(s):
+            count += 1
+        s = rotate(s)
+    return count
