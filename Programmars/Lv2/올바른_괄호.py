@@ -5,13 +5,15 @@ def solution(s):
         if c == "(":
             stack.append(c)
         else:
-            if "(" in stack:
-                stack.remove("(")
+            if len(stack) == 0:
+                return False
+            else:
+                stack.pop()
     if len(stack) > 0:
-        print("false")
+        print("f")
         return False
     else:
-        print("true")
+        print("t")
         return True
    
 
