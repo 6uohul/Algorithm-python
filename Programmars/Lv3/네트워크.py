@@ -12,36 +12,23 @@ i번 컴퓨터와 j번 컴퓨터가 연결되어 있으면 computers[i][j]를 1�
 computer[i][i]는 항상 1입니다.
 '''
 
-
 def solution(n, computers):
-    global parent
-    parent == [i for i in range(n)]
-    count = 0
+    answer = 0
+    visited = [0 for i in range(n)]
     
+    def dfs(node):
+        visited[node] = 1
+        for adj_node in range(n):
+            if visited[adj_node] == 0 and computers[node][adj_node] == 1:
+                visited[adj_node] = 1
+                dfs(adj_node)
     for i in range(n):
-        for j in range(n):
-            if computers[i][j] == 1:
-                union(i, j)
+        if visited[i] == 0:
+            dfs(i)
+            answer += 1
 
-    networks = set(find(i) for i in range(n))    
-    return len(networks)
+    return answer
 
-def find(x):
-    if x != parent[x]:
-        parent[x] = find(parent[x])
-    return parent[x]
 
-def union(x, y):
-    x = parent[x]
-    y = parent[y]
 
-    if x > y:
-        parent[x] = y
-    else:
-        parent[y] = x
-        
-solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]) 
-# 2
-
-solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]])
-# 1
+print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
