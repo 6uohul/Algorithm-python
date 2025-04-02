@@ -11,7 +11,7 @@ def solution(book_time):
 
     for start, end in book_time:
         start_time = time_convert(start)
-        end_time = time_convert(end)
+        end_time = time_convert(end) + 10
 
         # 처리할 방이 남아있고, 다음 시작시간이 끝나는 시간보다 더 클 떄 (예약가능)
         if heap and start_time >= heap[0]:
