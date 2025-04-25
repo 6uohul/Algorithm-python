@@ -32,3 +32,27 @@ def solution(n, computers):
 
 
 print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
+print(solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]]))
+
+print("------------------------------------------------------")
+
+
+def solution_ver2(n, computers):
+    result = 0
+    visited = [0 for i in range(n)]
+    for i in range(n):
+        if visited[i] == 0:
+            dfs(visited, i, computers)
+            result += 1
+
+    return result
+
+def dfs(visited, index, graph):
+    visited[index] = 1
+
+    for adj_node in range(len(graph)):
+        if visited[adj_node] == 0 and graph[index][adj_node] == 1:
+            dfs(visited, adj_node, graph)
+
+print(solution_ver2(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
+print(solution_ver2(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]]))
